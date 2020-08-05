@@ -11,7 +11,6 @@ import com.example.fudlocker.model.Product
 class ProductsViewModel : ViewModel() {
 
     private val _productList = MutableLiveData<PagedList<Product>>()
-
     val productList: LiveData<PagedList<Product>>
     get() = _productList
 
@@ -23,5 +22,5 @@ class ProductsViewModel : ViewModel() {
     fun setIndex(index: Int) {
         _index.value = index
     }
-    
+
 }
