@@ -20,6 +20,7 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:itemCount="7"
+            app:listData="@{viewModel.productList}"
             tools:listitem="@layout/item_product"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

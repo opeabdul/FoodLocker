@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fudlocker.databinding.FragmentProductsBinding
 import com.example.fudlocker.ui.main.adapters.ProductAdapter
 
@@ -31,6 +32,8 @@ class ProductsFragment : Fragment() {
         mBinding = FragmentProductsBinding.inflate(inflater, container, false)
         mBinding.lifecycleOwner = this
         mBinding.viewModel = productsViewModel
+        val adapter = ProductAdapter()
+        mBinding.productList.layoutManager = GridLayoutManager(requireContext(), 2)
         mBinding.productList.adapter = ProductAdapter()
         return mBinding.root
     }
