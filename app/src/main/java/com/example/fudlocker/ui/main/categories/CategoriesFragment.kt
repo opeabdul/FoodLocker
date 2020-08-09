@@ -38,7 +38,8 @@ class CategoriesFragment : Fragment() {
         mBinding = FragmentCategoriesBinding.inflate(inflater, container, false)
         mBinding.lifecycleOwner = this
         mBinding.viewModel = categoriesViewModel
-        mBinding.categoriesList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        mBinding.categoriesList.layoutManager = GridLayoutManager(requireContext(), 2,
+            LinearLayoutManager.VERTICAL, false)
         mBinding.categoriesList.adapter = CategoriesAdapter()
         return mBinding.root
     }

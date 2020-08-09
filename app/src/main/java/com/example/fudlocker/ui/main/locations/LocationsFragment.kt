@@ -36,7 +36,7 @@ class LocationsFragment : Fragment() {
         mBinding = FragmentLocationsBinding.inflate(inflater, container, false)
         mBinding.lifecycleOwner = this
         mBinding.viewModel = locationsViewModel
-        mBinding.locationList.layoutManager = GridLayoutManager(requireContext(), 3,
+        mBinding.locationList.layoutManager = LinearLayoutManager(requireContext(),
             LinearLayoutManager.VERTICAL, false)
         mBinding.locationList.adapter = LocationAdapter()
         return mBinding.root

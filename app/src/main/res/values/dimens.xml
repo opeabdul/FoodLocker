@@ -8,4 +8,5 @@
     <dimen name="single_line_spacing">10dp</dimen>
     <dimen name="double_line_spacing">20dp</dimen>
     <dimen name="triple_line_spacing">30dp</dimen>
+    <dimen name="card_radius">4dp</dimen>
 </resources>

@@ -17,7 +17,9 @@ class LocationAdapter(): ListAdapter<Location, LocationAdapter.LocationViewHolde
     }
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = getItem(position)
+        item.id = position + 1
+        holder.bind(item)
     }
 
     inner class LocationViewHolder(val binding: ItemLocationBinding): RecyclerView.ViewHolder(binding.root){

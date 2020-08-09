@@ -1,5 +1,7 @@
 package com.example.fudlocker
 
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.paging.PagedList
@@ -22,4 +24,17 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Any>?) {
 @BindingAdapter("bindImage")
 fun bindImageView(imageView: AppCompatImageView, imageSrc: String ){
     Glide.with(imageView.context).load(imageSrc).into(imageView)
+}
+
+@BindingAdapter("barVisibility")
+fun showProgressbar(view: View, data: List<Any>?){
+    if (data == null)
+        view.visibility = View.VISIBLE
+    else
+        view.visibility = View.GONE
+}
+
+@BindingAdapter("bindDollarSign")
+fun bindMoney(textView: TextView, value: String){
+    textView.text = String.format(textView.context.getString(R.string.dollar_value), value)
 }

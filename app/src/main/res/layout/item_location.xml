@@ -8,60 +8,124 @@
         <variable
             name="location"
             type="com.example.fudlocker.model.Location" />
+
+        <!--        <variable-->
+        <!--            name="clickListener"-->
+        <!--            type="com.example.opeyemiabdulsalam.filterlist.FilterClickListener" />-->
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/products_background"
-        android:padding="20dp">
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardUseCompatPadding="true">
 
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/single_line_spacing"
-            android:text="@{location.name}"
-            android:textColor="@color/text_blue"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/product_model"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Yeezy 700 V3" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/product_model"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/single_line_spacing"
-            android:text="@{location.price}"
-            android:textColor="@color/text_faded_blue"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@id/price_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_name"
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            tools:text="UK 6-11" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/price_button"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="@dimen/single_line_spacing"
-            android:text="@{location.vat}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/product_model"
-            app:layout_constraintVertical_chainStyle="spread_inside"
-            tools:text="$150" />
+            android:layout_height="wrap_content"
+            android:padding="10dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/circle_background_ash"
+                android:gravity="center"
+                android:text="@{String.valueOf(location.id)}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="#1" />
+
+            <TextView
+                android:id="@+id/location_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{location.name}"
+                android:textColor="@color/text_blue"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@id/count"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/count"
+                tools:text="University of Ibadan" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/wallet_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/wallet_image"
+                app:layout_constraintStart_toStartOf="@id/location_name"
+                app:layout_constraintTop_toBottomOf="@id/location_name" />
+
+            <TextView
+                android:id="@+id/countries"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/text_faded_blue"
+                android:textStyle="bold"
+                app:bindDollarSign="@{location.price}"
+                app:layout_constraintBottom_toBottomOf="@id/wallet_image"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@id/wallet_image"
+                app:layout_constraintTop_toTopOf="@id/wallet_image"
+                tools:text="$1,200" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/vat_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_payment_24"
+                app:layout_constraintStart_toStartOf="@id/wallet_image"
+                app:layout_constraintTop_toBottomOf="@id/wallet_image" />
+
+            <TextView
+                android:id="@+id/vat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:text="@{location.vat}"
+                android:textAllCaps="true"
+                android:textColor="@color/text_faded_blue"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/vat_image"
+                app:layout_constraintStart_toEndOf="@id/vat_image"
+                app:layout_constraintTop_toTopOf="@id/vat_image"
+                tools:text="37.2" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/time_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_baseline_access_time_24"
+                app:layout_constraintBottom_toBottomOf="@id/vat_image"
+                app:layout_constraintStart_toEndOf="@id/vat"
+                app:layout_constraintTop_toTopOf="@id/vat_image" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:text="@{location.time}"
+                android:textAllCaps="true"
+                android:textColor="@color/text_faded_blue"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/vat_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/time_image"
+                app:layout_constraintTop_toTopOf="@id/vat_image"
+                tools:text="12:44" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </layout>

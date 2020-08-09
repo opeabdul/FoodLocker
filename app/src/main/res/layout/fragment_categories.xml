@@ -23,6 +23,15 @@
             app:listData="@{viewModel.categoryList}"
             tools:listitem="@layout/item_category" />
 
+        <ProgressBar
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:barVisibility="@{viewModel.categoryList}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

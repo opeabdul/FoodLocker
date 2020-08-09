@@ -4,4 +4,5 @@
     <string name="tab_text_2">Categories</string>
     <string name="tab_text_3">Locations</string>
     <string name="to_be_implemented">To be implemented</string>
+    <string name="dollar_value">$%1$s</string>
 </resources>

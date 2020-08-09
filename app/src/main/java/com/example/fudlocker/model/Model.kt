@@ -20,7 +20,7 @@ data class Category(
 )
 
 data class Location(
-    val id: Int,
+    var id: Int,
     val name: String,
     val time: String,
     val price: String,
