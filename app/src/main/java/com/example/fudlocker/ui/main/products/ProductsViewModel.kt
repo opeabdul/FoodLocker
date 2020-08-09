@@ -10,19 +10,19 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 class ProductsViewModel : ViewModel() {
-
-    private val TAG = ProductsViewModel::class.java.simpleName
+    private val _index = MutableLiveData<Int>()
 
     private val repository =  ProductRepository.getInstance()
-    private val _productResponseLiveData = MutableLiveData<ProductsResponse>()
+    private val TAG = ProductsViewModel::class.java.simpleName
     private var job: Job? = null
 
 
+    private val _productResponseLiveData = MutableLiveData<ProductsResponse>()
     val productList: LiveData<List<Product>> = Transformations.map(_productResponseLiveData){ productResponse ->
         productResponse?.products
     }
 
-    private val _index = MutableLiveData<Int>()
+
 
     fun setIndex(index: Int) {
         _index.value = index

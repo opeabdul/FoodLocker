@@ -1,5 +1,7 @@
 package com.example.fudlocker.network
 
+import com.example.fudlocker.model.CategoriesResponse
+import com.example.fudlocker.model.LocationResponse
 import com.example.fudlocker.model.User
 import com.example.fudlocker.model.ProductsResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -19,10 +21,20 @@ interface ServiceRequests {
 
 
 
-    @GET("apiv1?action=all_products")
+    @GET("apiv1")
     fun getProductsDetails(
-//        @Query("action") action: String
+        @Query("action") action: String
     ): Deferred<ProductsResponse>
+
+    @GET("apiv1")
+    fun getCategories(
+        @Query("action") action: String
+    ): Deferred<CategoriesResponse>
+
+    @GET("apiv1")
+    fun getLocations(
+        @Query("action") action: String
+    ): Deferred<LocationResponse>
 
     @POST("apiv1/action=login")
     fun login(email: String, password: String)

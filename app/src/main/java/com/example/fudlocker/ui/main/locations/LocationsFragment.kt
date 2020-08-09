@@ -8,7 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fudlocker.R
+import com.example.fudlocker.databinding.FragmentLocationsBinding
+import com.example.fudlocker.ui.main.adapters.LocationAdapter
 
 /**
  * A placeholder fragment containing a simple view.
@@ -16,6 +20,7 @@ import com.example.fudlocker.R
 class LocationsFragment : Fragment() {
 
     private lateinit var locationsViewModel: LocationsViewModel
+    private lateinit var mBinding: FragmentLocationsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +33,13 @@ class LocationsFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_locations, container, false)
-        val textView: TextView = root.findViewById(R.id.section_label)
-        locationsViewModel.text.observe(viewLifecycleOwner, Observer<String> {
-            textView.text = it
-        })
-        return root
+        mBinding = FragmentLocationsBinding.inflate(inflater, container, false)
+        mBinding.lifecycleOwner = this
+        mBinding.viewModel = locationsViewModel
+        mBinding.locationList.layoutManager = GridLayoutManager(requireContext(), 3,
+            LinearLayoutManager.VERTICAL, false)
+        mBinding.locationList.adapter = LocationAdapter()
+        return mBinding.root
     }
 
     companion object {

@@ -8,7 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fudlocker.R
+import com.example.fudlocker.databinding.FragmentCategoriesBinding
+import com.example.fudlocker.databinding.FragmentProductsBinding
+import com.example.fudlocker.ui.main.adapters.CategoriesAdapter
+import com.example.fudlocker.ui.main.adapters.ProductAdapter
 
 /**
  * A placeholder fragment containing a simple view.
@@ -16,6 +22,7 @@ import com.example.fudlocker.R
 class CategoriesFragment : Fragment() {
 
     private lateinit var categoriesViewModel: CategoriesViewModel
+    private lateinit var mBinding: FragmentCategoriesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,12 +35,12 @@ class CategoriesFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_categories, container, false)
-        val textView: TextView = root.findViewById(R.id.section_label)
-        categoriesViewModel.text.observe(viewLifecycleOwner, Observer<String> {
-            textView.text = it
-        })
-        return root
+        mBinding = FragmentCategoriesBinding.inflate(inflater, container, false)
+        mBinding.lifecycleOwner = this
+        mBinding.viewModel = categoriesViewModel
+        mBinding.categoriesList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        mBinding.categoriesList.adapter = CategoriesAdapter()
+        return mBinding.root
     }
 
     companion object {
