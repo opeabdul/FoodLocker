@@ -1,2 +1,3 @@
-FoodLocker
-A simple prototype android applciation that utilises foodlocker.com APIs to display list of products, categories of products, and delivery locations.
+#FoodLocker
+
+A simple android application that utilises foodlocker.com APIs to display a list of products, product categories and delivery locations.
